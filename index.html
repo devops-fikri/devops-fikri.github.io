@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio Muhammad Fikri bin Mohamad Fadzil - Resident Engineer, Network Security, Cloud, Cybersecurity dan Identity Security." />
+  <title>Muhammad Fikri | Resident Engineer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #080b12;
+      --card: rgba(18, 24, 38, 0.88);
+      --card-secondary: rgba(255, 255, 255, 0.045);
+      --text: #f5f7fb;
+      --muted: #9ca7b8;
+      --accent: #63e6be;
+      --accent-secondary: #6ea8fe;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(99, 230, 190, 0.1), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(110, 168, 254, 0.1), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .portfolio-card {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: 0 30px 80px var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-card::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(99, 230, 190, 0.08);
+      top: -130px;
+      right: -80px;
+      filter: blur(15px);
+    }
+
+    .portfolio-card::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(110, 168, 254, 0.07);
+      bottom: -120px;
+      left: -90px;
+      filter: blur(15px);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+      max-width: 750px;
+    }
+
+    .role {
+      color: var(--accent-secondary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section {
+      margin-top: 32px;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 13px;
+      background: var(--card-secondary);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: #dce4ef;
+      font-size: 0.86rem;
+      transition: 0.25s ease;
+    }
+
+    .skill:hover {
+      border-color: rgba(99, 230, 190, 0.45);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .highlight {
+      background: var(--card-secondary);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .highlight strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+
+    .highlight span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .fact {
+      margin-top: 32px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(
+        90deg,
+        rgba(99, 230, 190, 0.08),
+        transparent
+      );
+      border-radius: 0 14px 14px 0;
+      color: #d7dee9;
+      font-size: 0.92rem;
+    }
+
+    .fact strong {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: #697487;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .portfolio-card {
+        padding: 30px 22px;
+        border-radius: 22px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="portfolio-card">
+    <div class="content">
+
+      <div class="status">
+        <span class="status-dot"></span>
+        Network • Security • Cloud
+      </div>
+
+      <h1>Muhammad Fikri bin Mohamad Fadzil</h1>
+
+      <div class="role">
+        Resident Engineer
+      </div>
+
+      <p class="intro">
+        Seorang IT dan cybersecurity enthusiast dengan pengalaman hands-on dalam
+        network security, secure web gateway, privileged access management,
+        identity security, certificate management, cloud dan infrastructure.
+        Saya gemar memahami bagaimana sesuatu sistem berfungsi dari network layer
+        sehingga ke identity, authentication dan security controls.
+      </p>
+
+      <section class="section">
+        <h2 class="section-title">Kemahiran & Teknologi</h2>
+
+        <div class="skills">
+          <span class="skill">Network Security</span>
+          <span class="skill">Cybersecurity</span>
+          <span class="skill">Cloud Computing</span>
+          <span class="skill">AWS</span>
+          <span class="skill">AWS VPC</span>
+
+          <span class="skill">CyberArk Privilege Cloud</span>
+          <span class="skill">Privileged Access Management</span>
+          <span class="skill">CyberArk Certificate Manager</span>
+          <span class="skill">Venafi</span>
+          <span class="skill">SailPoint ISC</span>
+          <span class="skill">Identity Security</span>
+
+          <span class="skill">Symantec ProxySG</span>
+          <span class="skill">Symantec Management Center</span>
+          <span class="skill">Symantec Reporter</span>
+          <span class="skill">Secure Web Gateway</span>
+          <span class="skill">URL Filtering</span>
+          <span class="skill">DLP</span>
+
+          <span class="skill">Fortinet FortiGate</span>
+          <span class="skill">FortiManager</span>
+          <span class="skill">FortiAnalyzer</span>
+          <span class="skill">Firewall Policy</span>
+          <span class="skill">IPS</span>
+          <span class="skill">Web Filtering</span>
+          <span class="skill">SSL Inspection</span>
+          <span class="skill">SD-WAN</span>
+
+          <span class="skill">Cisco Networking</span>
+          <span class="skill">VLAN</span>
+          <span class="skill">Routing & Switching</span>
+          <span class="skill">DNS</span>
+          <span class="skill">DHCP</span>
+
+          <span class="skill">Linux</span>
+          <span class="skill">Ubuntu</span>
+          <span class="skill">Windows Server</span>
+          <span class="skill">Active Directory</span>
+          <span class="skill">AD CS</span>
+          <span class="skill">IIS</span>
+
+          <span class="skill">Kerberos</span>
+          <span class="skill">LDAP</span>
+          <span class="skill">RADIUS</span>
+          <span class="skill">TACACS+</span>
+          <span class="skill">SSH</span>
+          <span class="skill">SSH Key Management</span>
+          <span class="skill">WinRM</span>
+
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">K3s</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">DevOps</span>
+
+          <span class="skill">Wireshark</span>
+          <span class="skill">tcpdump</span>
+          <span class="skill">curl</span>
+          <span class="skill">Traceroute</span>
+          <span class="skill">Syslog</span>
+          <span class="skill">Troubleshooting</span>
+
+          <span class="skill">NS-2</span>
+          <span class="skill">VANET</span>
+          <span class="skill">AODV</span>
+          <span class="skill">Network Simulation</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Fokus Utama</h2>
+
+        <div class="highlight-grid">
+          <div class="highlight">
+            <strong>Network Security</strong>
+            <span>
+              Firewall, ProxySG, traffic analysis, secure web access dan troubleshooting.
+            </span>
+          </div>
+
+          <div class="highlight">
+            <strong>Identity & PAM</strong>
+            <span>
+              CyberArk, SailPoint, account onboarding, reconciliation dan credential management.
+            </span>
+          </div>
+
+          <div class="highlight">
+            <strong>Cloud & DevOps</strong>
+            <span>
+              AWS, Docker, Kubernetes, GitHub dan pembangunan kemahiran ke arah cloud engineering.
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div class="fact">
+        <strong>Fakta menarik:</strong>
+        Saya suka troubleshoot masalah teknikal sehingga ke root cause — daripada DNS dan Kerberos,
+        sehinggalah firewall, PAM, certificate management dan cloud infrastructure.
+      </div>
+
+      <footer>
+        <span>© 2026 Muhammad Fikri bin Mohamad Fadzil</span>
+        <span>Resident Engineer • Network Security • Cloud • Cybersecurity</span>
+      </footer>
+
+    </div>
+  </main>
+</body>
+</html>
