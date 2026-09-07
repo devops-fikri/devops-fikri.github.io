@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio Muhammad Fikri bin Mohamad Fadzil - Resident Engineer, Network Security, Cloud, Cybersecurity dan Identity Security." />
+  <meta name="description" content="Portfolio of Muhammad Fikri bin Mohamad Fadzil - Resident Engineer, Cybersecurity, Network Security, Identity Security and Cloud." />
   <title>Muhammad Fikri | Resident Engineer</title>
 
   <style>
@@ -14,15 +14,19 @@
     }
 
     :root {
-      --bg: #080b12;
-      --card: rgba(18, 24, 38, 0.88);
-      --card-secondary: rgba(255, 255, 255, 0.045);
-      --text: #f5f7fb;
-      --muted: #9ca7b8;
-      --accent: #63e6be;
-      --accent-secondary: #6ea8fe;
-      --border: rgba(255, 255, 255, 0.09);
-      --shadow: rgba(0, 0, 0, 0.5);
+      --bg: #070a10;
+      --surface: #0d121c;
+      --surface-2: #121925;
+      --surface-3: #171f2d;
+      --text: #f5f7fa;
+      --muted: #96a0ae;
+      --primary: #65e6bd;
+      --primary-soft: rgba(101, 230, 189, 0.12);
+      --blue: #70a5ff;
+      --blue-soft: rgba(112, 165, 255, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(101, 230, 189, 0.3);
+      --shadow: rgba(0, 0, 0, 0.35);
     }
 
     html {
@@ -33,345 +37,903 @@
       min-height: 100vh;
       font-family: Inter, "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at 15% 20%, rgba(99, 230, 190, 0.1), transparent 28%),
-        radial-gradient(circle at 85% 80%, rgba(110, 168, 254, 0.1), transparent 28%),
+        radial-gradient(circle at 10% 10%, rgba(101, 230, 189, 0.08), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(112, 165, 255, 0.08), transparent 28%),
         var(--bg);
       color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 10, 16, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      width: min(1150px, calc(100% - 40px));
+      margin: auto;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* MAIN */
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 115px 0 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      line-height: 1.6;
     }
 
-    .portfolio-card {
+    .profile-card {
       width: 100%;
-      max-width: 900px;
-      background: var(--card);
+      max-width: 760px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.035),
+          rgba(255,255,255,0.01)
+        ),
+        var(--surface);
       border: 1px solid var(--border);
       border-radius: 28px;
-      padding: 48px;
-      box-shadow: 0 30px 80px var(--shadow);
-      backdrop-filter: blur(18px);
+      padding: 50px 45px;
+      text-align: center;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 30px 100px var(--shadow);
     }
 
-    .portfolio-card::before {
+    .profile-card::before {
       content: "";
       position: absolute;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      background: rgba(99, 230, 190, 0.08);
       top: -130px;
-      right: -80px;
-      filter: blur(15px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 250px;
+      background: radial-gradient(
+        circle,
+        rgba(101, 230, 189, 0.13),
+        transparent 68%
+      );
+      pointer-events: none;
     }
 
-    .portfolio-card::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
+    /* Avatar uses initials, so no image file is needed */
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 24px;
       border-radius: 50%;
-      background: rgba(110, 168, 254, 0.07);
-      bottom: -120px;
-      left: -90px;
-      filter: blur(15px);
-    }
-
-    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(101, 230, 189, 0.18),
+          rgba(112, 165, 255, 0.15)
+        );
+      border: 1px solid rgba(101, 230, 189, 0.25);
+      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      box-shadow:
+        0 0 0 8px rgba(101, 230, 189, 0.025),
+        0 15px 35px rgba(0, 0, 0, 0.25);
       position: relative;
       z-index: 1;
     }
 
-    .status {
+    .availability {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--accent);
-      font-size: 0.85rem;
+      background: var(--primary-soft);
+      border: 1px solid rgba(101, 230, 189, 0.15);
+      padding: 7px 13px;
+      border-radius: 999px;
+      color: var(--primary);
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       margin-bottom: 20px;
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
+    .availability-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px var(--accent);
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
     }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.8rem);
+    .profile-card h1 {
+      font-size: clamp(2rem, 6vw, 3.3rem);
       line-height: 1.08;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-      max-width: 750px;
+      letter-spacing: -0.05em;
+      margin-bottom: 12px;
     }
 
-    .role {
-      color: var(--accent-secondary);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 22px;
+    .position {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 5px;
     }
 
-    .intro {
+    .specialization {
       color: var(--muted);
-      font-size: 1rem;
-      max-width: 760px;
-      margin-bottom: 34px;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
     }
 
-    .section {
-      margin-top: 32px;
+    .bio {
+      max-width: 620px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
     }
 
-    .section-title {
-      font-size: 0.8rem;
+    .profile-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      padding: 11px 20px;
+      border-radius: 11px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #06100d;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(101, 230, 189, 0.18);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-hover);
+      background: var(--primary-soft);
+      transform: translateY(-2px);
+    }
+
+    .scroll-hint {
+      margin-top: 35px;
+      color: #616b78;
+      font-size: 0.78rem;
+    }
+
+    /* SECTIONS */
+    section.content-section {
+      padding: 75px 0;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.7rem, 4vw, 2.35rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 7px;
+    }
+
+    .section-header p {
       color: var(--muted);
-      margin-bottom: 15px;
+      max-width: 620px;
+      font-size: 0.92rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 26px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255,255,255,0.13);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .fact-card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(101, 230, 189, 0.055),
+          transparent
+        ),
+        var(--surface);
+    }
+
+    .fact-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    /* EXPERTISE */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .expertise-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 25px;
+      transition: 0.25s ease;
+    }
+
+    .expertise-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .expertise-number {
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .expertise-card h3 {
+      font-size: 1rem;
+      margin-bottom: 9px;
+    }
+
+    .expertise-card p {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.7;
+    }
+
+    /* SKILLS */
+    .skills-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .skill-category {
+      margin-bottom: 27px;
+    }
+
+    .skill-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-category h3 {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
     }
 
     .skill {
       padding: 8px 13px;
-      background: var(--card-secondary);
       border: 1px solid var(--border);
-      border-radius: 999px;
-      color: #dce4ef;
-      font-size: 0.86rem;
-      transition: 0.25s ease;
+      border-radius: 9px;
+      background: var(--surface-2);
+      color: #cbd2dc;
+      font-size: 0.8rem;
+      transition: 0.2s ease;
     }
 
     .skill:hover {
-      border-color: rgba(99, 230, 190, 0.45);
-      color: var(--accent);
-      transform: translateY(-2px);
+      color: var(--primary);
+      border-color: var(--border-hover);
+      background: var(--primary-soft);
     }
 
-    .highlight-grid {
+    /* CERTIFICATIONS */
+    .cert-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 15px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
     }
 
-    .highlight {
-      background: var(--card-secondary);
+    .cert {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: var(--surface);
       border: 1px solid var(--border);
+      padding: 20px;
       border-radius: 18px;
-      padding: 18px;
     }
 
-    .highlight strong {
-      display: block;
-      color: var(--text);
-      margin-bottom: 5px;
-      font-size: 0.95rem;
-    }
-
-    .highlight span {
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    .fact {
-      margin-top: 32px;
-      padding: 18px 20px;
-      border-left: 3px solid var(--accent);
-      background: linear-gradient(
-        90deg,
-        rgba(99, 230, 190, 0.08),
-        transparent
-      );
-      border-radius: 0 14px 14px 0;
-      color: #d7dee9;
-      font-size: 0.92rem;
-    }
-
-    .fact strong {
-      color: var(--accent);
-    }
-
-    footer {
-      margin-top: 38px;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
-      color: #697487;
+    .cert-icon {
+      flex-shrink: 0;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-radius: 12px;
+      font-weight: 800;
       font-size: 0.78rem;
+    }
+
+    .cert h3 {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .cert p {
+      color: var(--muted);
+      font-size: 0.77rem;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      width: min(1100px, calc(100% - 40px));
+      min-height: 100px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 15px;
-      flex-wrap: wrap;
+      color: #68717e;
+      font-size: 0.78rem;
     }
 
-    @media (max-width: 700px) {
-      .portfolio-card {
-        padding: 30px 22px;
-        border-radius: 22px;
+    .footer-content strong {
+      color: #aeb6c1;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
       }
 
-      .highlight-grid {
+      .profile-card {
+        padding: 40px 24px;
+      }
+
+      .about-grid,
+      .expertise-grid,
+      .cert-grid {
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 2.3rem;
+      .hero {
+        padding-top: 100px;
+      }
+
+      section.content-section {
+        padding: 55px 0;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 25px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container,
+      .nav-container,
+      .footer-content {
+        width: min(100% - 28px, 1100px);
+      }
+
+      .profile-card {
+        border-radius: 22px;
+        padding: 35px 18px;
+      }
+
+      .avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 1.6rem;
+      }
+
+      .profile-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="portfolio-card">
-    <div class="content">
 
-      <div class="status">
-        <span class="status-dot"></span>
-        Network • Security • Cloud
-      </div>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        MF<span>.</span>
+      </a>
 
-      <h1>Muhammad Fikri bin Mohamad Fadzil</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <div class="role">
-        Resident Engineer
-      </div>
 
-      <p class="intro">
-        Seorang IT dan cybersecurity enthusiast dengan pengalaman hands-on dalam
-        network security, secure web gateway, privileged access management,
-        identity security, certificate management, cloud dan infrastructure.
-        Saya gemar memahami bagaimana sesuatu sistem berfungsi dari network layer
-        sehingga ke identity, authentication dan security controls.
-      </p>
+  <!-- HERO / PROFILE CARD -->
+  <header class="hero" id="home">
+    <div class="container">
 
-      <section class="section">
-        <h2 class="section-title">Kemahiran & Teknologi</h2>
+      <div class="profile-card">
 
-        <div class="skills">
-          <span class="skill">Network Security</span>
-          <span class="skill">Cybersecurity</span>
-          <span class="skill">Cloud Computing</span>
-          <span class="skill">AWS</span>
-          <span class="skill">AWS VPC</span>
-
-          <span class="skill">CyberArk Privilege Cloud</span>
-          <span class="skill">Privileged Access Management</span>
-          <span class="skill">CyberArk Certificate Manager</span>
-          <span class="skill">Venafi</span>
-          <span class="skill">SailPoint ISC</span>
-          <span class="skill">Identity Security</span>
-
-          <span class="skill">Symantec ProxySG</span>
-          <span class="skill">Symantec Management Center</span>
-          <span class="skill">Symantec Reporter</span>
-          <span class="skill">Secure Web Gateway</span>
-          <span class="skill">URL Filtering</span>
-          <span class="skill">DLP</span>
-
-          <span class="skill">Fortinet FortiGate</span>
-          <span class="skill">FortiManager</span>
-          <span class="skill">FortiAnalyzer</span>
-          <span class="skill">Firewall Policy</span>
-          <span class="skill">IPS</span>
-          <span class="skill">Web Filtering</span>
-          <span class="skill">SSL Inspection</span>
-          <span class="skill">SD-WAN</span>
-
-          <span class="skill">Cisco Networking</span>
-          <span class="skill">VLAN</span>
-          <span class="skill">Routing & Switching</span>
-          <span class="skill">DNS</span>
-          <span class="skill">DHCP</span>
-
-          <span class="skill">Linux</span>
-          <span class="skill">Ubuntu</span>
-          <span class="skill">Windows Server</span>
-          <span class="skill">Active Directory</span>
-          <span class="skill">AD CS</span>
-          <span class="skill">IIS</span>
-
-          <span class="skill">Kerberos</span>
-          <span class="skill">LDAP</span>
-          <span class="skill">RADIUS</span>
-          <span class="skill">TACACS+</span>
-          <span class="skill">SSH</span>
-          <span class="skill">SSH Key Management</span>
-          <span class="skill">WinRM</span>
-
-          <span class="skill">Docker</span>
-          <span class="skill">Kubernetes</span>
-          <span class="skill">K3s</span>
-          <span class="skill">Git</span>
-          <span class="skill">GitHub</span>
-          <span class="skill">DevOps</span>
-
-          <span class="skill">Wireshark</span>
-          <span class="skill">tcpdump</span>
-          <span class="skill">curl</span>
-          <span class="skill">Traceroute</span>
-          <span class="skill">Syslog</span>
-          <span class="skill">Troubleshooting</span>
-
-          <span class="skill">NS-2</span>
-          <span class="skill">VANET</span>
-          <span class="skill">AODV</span>
-          <span class="skill">Network Simulation</span>
+        <div class="avatar">
+          MF
         </div>
-      </section>
 
-      <section class="section">
-        <h2 class="section-title">Fokus Utama</h2>
-
-        <div class="highlight-grid">
-          <div class="highlight">
-            <strong>Network Security</strong>
-            <span>
-              Firewall, ProxySG, traffic analysis, secure web access dan troubleshooting.
-            </span>
-          </div>
-
-          <div class="highlight">
-            <strong>Identity & PAM</strong>
-            <span>
-              CyberArk, SailPoint, account onboarding, reconciliation dan credential management.
-            </span>
-          </div>
-
-          <div class="highlight">
-            <strong>Cloud & DevOps</strong>
-            <span>
-              AWS, Docker, Kubernetes, GitHub dan pembangunan kemahiran ke arah cloud engineering.
-            </span>
-          </div>
+        <div class="availability">
+          <span class="availability-dot"></span>
+          Network • Security • Cloud
         </div>
-      </section>
 
-      <div class="fact">
-        <strong>Fakta menarik:</strong>
-        Saya suka troubleshoot masalah teknikal sehingga ke root cause — daripada DNS dan Kerberos,
-        sehinggalah firewall, PAM, certificate management dan cloud infrastructure.
+        <h1>
+          Muhammad Fikri
+        </h1>
+
+        <div class="position">
+          Resident Engineer
+        </div>
+
+        <div class="specialization">
+          Network Security · Cybersecurity · Identity Security · Cloud
+        </div>
+
+        <p class="bio">
+          IT and cybersecurity professional with hands-on experience across
+          enterprise network security, privileged access management,
+          identity security, certificate management and cloud infrastructure.
+          I enjoy solving complex technical problems and understanding systems
+          from the network layer to identity and authentication.
+        </p>
+
+        <div class="profile-actions">
+          <a href="#about" class="btn btn-primary">
+            Explore Portfolio
+          </a>
+
+          <a href="#skills" class="btn btn-secondary">
+            View Skills
+          </a>
+        </div>
+
+        <div class="scroll-hint">
+          ↓ Scroll to discover more
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ABOUT -->
+  <section class="content-section" id="about">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="eyebrow">About Me</div>
+        <h2>A little about what I do.</h2>
+        <p>
+          My experience spans networking, cybersecurity, identity,
+          infrastructure and cloud technologies.
+        </p>
       </div>
 
-      <footer>
-        <span>© 2026 Muhammad Fikri bin Mohamad Fadzil</span>
-        <span>Resident Engineer • Network Security • Cloud • Cybersecurity</span>
-      </footer>
+      <div class="about-grid">
+
+        <div class="card">
+          <h3>My Background</h3>
+
+          <p>
+            As a Resident Engineer, I work with enterprise security
+            technologies and infrastructure while handling configuration,
+            troubleshooting, monitoring and operational support.
+            My technical interests extend beyond network security into
+            Privileged Access Management, Identity Security, cloud
+            technologies, DevOps and automation.
+          </p>
+        </div>
+
+        <div class="card fact-card">
+
+          <div class="fact-icon">
+            &lt;/&gt;
+          </div>
+
+          <h3>Interesting Fact</h3>
+
+          <p>
+            I enjoy troubleshooting technical issues all the way to their
+            root cause — whether the problem starts with DNS, Kerberos,
+            firewall policies, PAM, certificates or cloud infrastructure.
+          </p>
+
+        </div>
+      </div>
 
     </div>
-  </main>
+  </section>
+
+
+  <!-- EXPERTISE -->
+  <section class="content-section" id="expertise">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="eyebrow">Expertise</div>
+        <h2>What I work with.</h2>
+        <p>
+          My core technical focus covers enterprise security,
+          infrastructure and modern cloud technologies.
+        </p>
+      </div>
+
+      <div class="expertise-grid">
+
+        <div class="expertise-card">
+          <div class="expertise-number">01</div>
+
+          <h3>Network Security</h3>
+
+          <p>
+            Enterprise firewalls, secure web gateways, ProxySG,
+            traffic analysis, security policies, troubleshooting,
+            network protocols and infrastructure security.
+          </p>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-number">02</div>
+
+          <h3>Identity & PAM</h3>
+
+          <p>
+            CyberArk Privilege Cloud, SailPoint ISC, account onboarding,
+            reconciliation, SSH key management, credential rotation,
+            identity governance and access management.
+          </p>
+        </div>
+
+        <div class="expertise-card">
+          <div class="expertise-number">03</div>
+
+          <h3>Cloud & DevOps</h3>
+
+          <p>
+            AWS, Docker, Kubernetes, K3s, Git and GitHub with an
+            increasing focus on cloud infrastructure, automation
+            and modern DevOps practices.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section class="content-section" id="skills">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="eyebrow">Technical Stack</div>
+        <h2>Skills & technologies.</h2>
+        <p>
+          Technologies and platforms I have worked with,
+          studied or used in hands-on labs.
+        </p>
+      </div>
+
+      <div class="skills-wrapper">
+
+        <div class="skill-category">
+          <h3>Security & Identity</h3>
+
+          <div class="skills">
+            <span class="skill">CyberArk Privilege Cloud</span>
+            <span class="skill">CyberArk Certificate Manager</span>
+            <span class="skill">SailPoint ISC</span>
+            <span class="skill">Venafi</span>
+            <span class="skill">Privileged Access Management</span>
+            <span class="skill">Identity Security</span>
+            <span class="skill">Certificate Management</span>
+            <span class="skill">SSH Key Management</span>
+          </div>
+        </div>
+
+
+        <div class="skill-category">
+          <h3>Network Security</h3>
+
+          <div class="skills">
+            <span class="skill">Symantec ProxySG</span>
+            <span class="skill">Management Center</span>
+            <span class="skill">Reporter</span>
+            <span class="skill">Secure Web Gateway</span>
+            <span class="skill">Fortinet FortiGate</span>
+            <span class="skill">FortiManager</span>
+            <span class="skill">FortiAnalyzer</span>
+            <span class="skill">Firewall Policies</span>
+            <span class="skill">IPS</span>
+            <span class="skill">DLP</span>
+            <span class="skill">SSL Inspection</span>
+            <span class="skill">Web Filtering</span>
+            <span class="skill">SD-WAN</span>
+          </div>
+        </div>
+
+
+        <div class="skill-category">
+          <h3>Networking</h3>
+
+          <div class="skills">
+            <span class="skill">Cisco Networking</span>
+            <span class="skill">Routing & Switching</span>
+            <span class="skill">VLAN</span>
+            <span class="skill">DNS</span>
+            <span class="skill">DHCP</span>
+            <span class="skill">TCP/IP</span>
+            <span class="skill">Wireshark</span>
+            <span class="skill">tcpdump</span>
+            <span class="skill">Traceroute</span>
+          </div>
+        </div>
+
+
+        <div class="skill-category">
+          <h3>Infrastructure & Authentication</h3>
+
+          <div class="skills">
+            <span class="skill">Linux</span>
+            <span class="skill">Ubuntu</span>
+            <span class="skill">Windows Server</span>
+            <span class="skill">Active Directory</span>
+            <span class="skill">AD CS</span>
+            <span class="skill">IIS</span>
+            <span class="skill">Kerberos</span>
+            <span class="skill">LDAP</span>
+            <span class="skill">RADIUS</span>
+            <span class="skill">TACACS+</span>
+            <span class="skill">WinRM</span>
+            <span class="skill">SSH</span>
+          </div>
+        </div>
+
+
+        <div class="skill-category">
+          <h3>Cloud & DevOps</h3>
+
+          <div class="skills">
+            <span class="skill">AWS</span>
+            <span class="skill">AWS VPC</span>
+            <span class="skill">Docker</span>
+            <span class="skill">Kubernetes</span>
+            <span class="skill">K3s</span>
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">DevOps</span>
+          </div>
+        </div>
+
+
+        <div class="skill-category">
+          <h3>Research & Simulation</h3>
+
+          <div class="skills">
+            <span class="skill">NS-2</span>
+            <span class="skill">VANET</span>
+            <span class="skill">AODV</span>
+            <span class="skill">Network Simulation</span>
+            <span class="skill">Performance Analysis</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CERTIFICATIONS -->
+  <section class="content-section" id="certifications">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="eyebrow">Certifications</div>
+        <h2>Professional development.</h2>
+        <p>
+          Certifications and security technologies that support
+          my career development.
+        </p>
+      </div>
+
+      <div class="cert-grid">
+
+        <div class="cert">
+
+          <div class="cert-icon">
+            AWS
+          </div>
+
+          <div>
+            <h3>AWS Certified Cloud Practitioner</h3>
+            <p>
+              Cloud concepts, AWS services, security,
+              architecture and cloud economics.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="cert">
+
+          <div class="cert-icon">
+            SEC
+          </div>
+
+          <div>
+            <h3>Cybersecurity Development</h3>
+            <p>
+              Continuous learning across Fortinet,
+              CyberArk, SailPoint and enterprise security.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+
+      <span>
+        © 2026 <strong>Muhammad Fikri bin Mohamad Fadzil</strong>
+      </span>
+
+      <span>
+        Resident Engineer · Network Security · Identity · Cloud
+      </span>
+
+    </div>
+  </footer>
+
 </body>
 </html>
